@@ -71,9 +71,6 @@ class Character(models.Model):
     # Backstory of character.
     backstory = models.CharField(max_length=512)
 
-    # Character level.
-    level = models.IntegerField(default=1)
-
     # Character karma alignment.
     karma = models.CharField(
         max_length=2,
@@ -155,6 +152,9 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
     #       LEVELING
     # ---------------------------------------------------------------------------------------------
+    # Info relating to level up for character.
+
+    level = models.IntegerField(default=1)
 
     # ---------------------------------------------------------------------------------------------
     #       EQUIPMENT
