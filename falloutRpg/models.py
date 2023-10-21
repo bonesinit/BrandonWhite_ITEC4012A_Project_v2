@@ -30,7 +30,6 @@ class Perk(models.Model):
     # Required value from 1-100
     skill_2_req = models.IntegerField(default=0)
 
-
     def __str__(self):
         return self.name
 
@@ -86,210 +85,48 @@ class Character(models.Model):
     #       SPECIAL STATS
     # ---------------------------------------------------------------------------------------------
     # These are the core primary statistics that affect secondary statistics and skills.
+    # Strength, Perception, Endurance, Charisma, Intelligence, Agility, Luck
 
-    # Strength
-    stat_strength = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Perception
-    stat_perception = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Endurance
-    stat_endurance = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Charisma
-    stat_charisma = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Intelligence
-    stat_intelligence = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Agility
-    stat_agility = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Luck
-    stat_luck = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(10),
-            MinValueValidator(1)
-        ]
-    )
+    stat_strength = models.IntegerField(default=1, validators=[MaxValueValidator(10), MinValueValidator(1)])
+    stat_perception = models.IntegerField(default=1, validators=[MaxValueValidator(10), MinValueValidator(1)])
+    stat_endurance = models.IntegerField(default=1, validators=[MaxValueValidator(10), MinValueValidator(1)])
+    stat_charisma = models.IntegerField(default=1, validators=[MaxValueValidator(10), MinValueValidator(1)])
+    stat_intelligence = models.IntegerField(default=1, validators=[MaxValueValidator(10), MinValueValidator(1)])
+    stat_agility = models.IntegerField(default=1, validators=[MaxValueValidator(10), MinValueValidator(1)])
+    stat_luck = models.IntegerField(default=1, validators=[MaxValueValidator(10), MinValueValidator(1)])
 
     # ---------------------------------------------------------------------------------------------
     #       SKILLS
     # ---------------------------------------------------------------------------------------------
     # These are the skills used for skill checks and combat.
+    # Barter, Energy Weapons, Explosive, Guns, Medicine, Melee Weapons, Repair,
+    # Science, Sneak, Speech, Survival, Unarmed
 
-    # Barter
-    skill_barter = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Energy Weapons
-    skill_energy_weapons = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Explosives
-    skill_explosives = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Guns
-    skill_guns = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Medicine
-    skill_medicine = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Melee Weapons
-    skill_melee_weapons = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Repair
-    skill_repair = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Science
-    skill_science = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Sneak
-    skill_sneak = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Speech
-    skill_speech = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Survival
-    skill_survival = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
-
-    # Unarmed
-    skill_unarmed = models.IntegerField(
-        default=1,
-        validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ]
-    )
+    skill_barter = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_energy_weapons = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_explosives = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_guns = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_medicine = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_melee_weapons = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_repair = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_science = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_sneak = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_speech = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_survival = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_unarmed = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
 
     # ---------------------------------------------------------------------------------------------
     #       SECONDARY STATISTICS
     # ---------------------------------------------------------------------------------------------
     # These are statistics derived from the player's SPECIAL (primary) statistics.
+    # Action Points, Poison Resistance, Radiation Resistance, Critical Chance (%)
 
-    # Action Points
     action_points = models.IntegerField(default=1)
 
-    # Poison Resistance
-    poison_resistance = models.IntegerField(
-        default=0,
-        validators=[
-            MaxValueValidator(85),
-            MinValueValidator(0)
-        ]
-    )
+    poison_resistance = models.IntegerField(default=0, validators=[MaxValueValidator(85), MinValueValidator(0)])
 
-    # Radiation Resistance
-    radiation_resistance = models.IntegerField(
-        default=0,
-        validators=[
-            MaxValueValidator(85),
-            MinValueValidator(0)
-        ]
-    )
+    radiation_resistance = models.IntegerField(default=0, validators=[MaxValueValidator(85), MinValueValidator(0)])
 
-    # Critical Chance (%)
     critical_chance = models.IntegerField(default=1)
 
     # ---------------------------------------------------------------------------------------------
