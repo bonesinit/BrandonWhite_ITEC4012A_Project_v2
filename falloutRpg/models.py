@@ -151,19 +151,10 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
     #       EFFECTS
     # ---------------------------------------------------------------------------------------------
-    # These are effects caused by radiation sickness, intoxication, and if character is on fire or poisoned.
+    # Radiation, combat effects, chem effects
 
-    # Radiation effects
     rad_effects = models.CharField(max_length=64)
-
-    # Other effects, including chems
     other_effects = models.CharField(max_length=256)
-
-    # Is character poisoned?
-    is_poisoned = models.BooleanField(default=False)
-
-    # Is character on fire?
-    is_burning = models.BooleanField(default=False)
 
     # ---------------------------------------------------------------------------------------------
     #       LEVELING
