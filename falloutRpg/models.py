@@ -75,15 +75,25 @@ class Perk(models.Model):
     # Character level requirement from 1-50.
     level_req = models.IntegerField(default=1)
 
-    # Name of SPECIAL skill requirement (optional)
-    special_skill_name = models.CharField(
+    # Name of first SPECIAL skill requirement (optional)
+    special_skill_1_name = models.CharField(
         max_length=2,
         choices=SPECIAL_CHOICES,
         default=NOT_REQUIRED_SPECIAL,
     )
 
     # Special skill requirement from 1-10.
-    special_skill_req = models.IntegerField(default=0)
+    special_1_req = models.IntegerField(default=0)
+
+    # Name of second SPECIAL skill requirement (optional)
+    special_skill_2_name = models.CharField(
+        max_length=2,
+        choices=SPECIAL_CHOICES,
+        default=NOT_REQUIRED_SPECIAL,
+    )
+
+    # Special skill requirement from 1-10.
+    special_2_req = models.IntegerField(default=0)
 
     # Name of first skill requirement (optional)
     skill_1_name = models.CharField(
