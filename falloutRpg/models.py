@@ -67,7 +67,7 @@ class Character(models.Model):
     name = models.CharField(max_length=64)
 
     # Physical description of character.
-    description = models.CharField(max_length=256)
+    description = models.CharField(max_length=512)
 
     # Backstory of character.
     backstory = models.CharField(max_length=512)
