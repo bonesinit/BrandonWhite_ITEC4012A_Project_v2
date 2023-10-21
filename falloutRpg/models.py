@@ -132,7 +132,7 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
     #       PERKS
     # ---------------------------------------------------------------------------------------------
-    # These are bonus abilities that a player earns on level up.
+    # These are bonus abilities that a player earned on level up.
 
     # List of character's perks.
     perks = models.ManyToManyField(Perk)
@@ -146,18 +146,12 @@ class Character(models.Model):
     hit_points = models.IntegerField(default=0)
 
     # Rads
-    rads = models.IntegerField(
-        default=0,
-        validators=[
-            MaxValueValidator(1000),
-            MinValueValidator(0)
-        ]
-    )
+    rads = models.IntegerField(default=0, validators=[MaxValueValidator(1000), MinValueValidator(0)])
 
     # ---------------------------------------------------------------------------------------------
     #       EFFECTS
     # ---------------------------------------------------------------------------------------------
-    # These are effects caused by radiation sickness, intoxication, and damage types (poison, fire, frost, electric).
+    # These are effects caused by radiation sickness, intoxication, and if character is on fire or poisoned.
 
     # Radiation effects
     rad_effects = models.CharField(max_length=64)
@@ -165,17 +159,11 @@ class Character(models.Model):
     # Other effects, including chems
     other_effects = models.CharField(max_length=256)
 
-    # Poison damage taken per round
-    poison_dam = models.IntegerField(default=0)
+    # Is character poisoned?
+    is_poisoned = models.BooleanField(default=False)
 
-    # Fire damage taken per round
-    fire_dam = models.IntegerField(default=0)
-
-    # Frost damage taken per round
-    frost_dam = models.IntegerField(default=0)
-
-    # Electric damage taken per round
-    electric_dam = models.IntegerField(default=0)
+    # Is character on fire?
+    is_burning = models.BooleanField(default=False)
 
     # ---------------------------------------------------------------------------------------------
     #       LEVELING
