@@ -301,4 +301,17 @@ class Armor(models.Model):
 class Inventory(models.Model):
     owner = models.ForeignKey(Character, on_delete=models.CASCADE())
 
+    def __str__(self):
+        return self.owner.name
 
+class Inventory_Item(models.Model):
+    owner_inventory = models.ForeignKey(Inventory, on_delete=models.CASCADE())
+    name = models.CharField(max_length=128)
+    value = models.IntegerField(default=0)
+    notes = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["name"]
