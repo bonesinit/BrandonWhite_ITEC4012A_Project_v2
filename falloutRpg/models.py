@@ -19,6 +19,7 @@ class Perk(models.Model):
     INTELLIGENCE = "IN"
     AGILITY = "AG"
     LUCK = "LU"
+    NOT_REQUIRED_SPECIAL = "NA"
 
     SPECIAL_CHOICES = [
         ("ST", "Strength"),
@@ -28,6 +29,7 @@ class Perk(models.Model):
         ("IN", "Intelligence"),
         ("AG", "Agility"),
         ("LU", "Luck"),
+        ("NA", "Not Required"),
     ]
 
     # Skills
@@ -44,6 +46,7 @@ class Perk(models.Model):
     SPEECH = "SP"
     SURVIVAL = "SU"
     UNARMED = "UN"
+    NOT_REQUIRED_SKILL = "NA"
 
     SKILL_CHOICES = [
         ("BA", "Barter"),
@@ -58,6 +61,7 @@ class Perk(models.Model):
         ("SP", "Speech"),
         ("SU", "Survival"),
         ("UN", "Unarmed"),
+        ("NA", "Not Required"),
     ]
 
     # ---------------------------------------------------------------------------------------------
@@ -75,7 +79,7 @@ class Perk(models.Model):
     special_skill_name = models.CharField(
         max_length=2,
         choices=SPECIAL_CHOICES,
-        default=STRENGTH,
+        default=NOT_REQUIRED_SPECIAL,
     )
 
     # Special skill requirement from 1-10.
@@ -85,7 +89,7 @@ class Perk(models.Model):
     skill_1_name = models.CharField(
         max_length=2,
         choices=SKILL_CHOICES,
-        default=BARTER,
+        default=NOT_REQUIRED_SKILL,
     )
     # Required value from 1-100
     skill_1_req = models.IntegerField(default=0)
@@ -94,7 +98,7 @@ class Perk(models.Model):
     skill_2_name = models.CharField(
         max_length=2,
         choices=SKILL_CHOICES,
-        default=BARTER,
+        default=NOT_REQUIRED_SKILL,
     )
     # Required value from 1-100
     skill_2_req = models.IntegerField(default=0)
