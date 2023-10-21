@@ -6,6 +6,62 @@ class Perk(models.Model):
     # Perks are available based on whether or not characters satisfy various requirements.
     # Perks that are selected on level-up are added to the character sheet.
 
+    # ---------------------------------------------------------------------------------------------
+    #       DEFINING CHOICES
+    # ---------------------------------------------------------------------------------------------
+
+    # SPECIAL
+
+    STRENGTH = "ST"
+    PERCEPTION = "PE"
+    ENDURANCE = "EN"
+    CHARISMA = "CH"
+    INTELLIGENCE = "IN"
+    AGILITY = "AG"
+    LUCK = "LU"
+
+    SPECIAL_CHOICES = [
+        ("ST", "Strength"),
+        ("PE", "Perception"),
+        ("EN", "Endurance"),
+        ("CH", "Charisma"),
+        ("IN", "Intelligence"),
+        ("AG", "Agility"),
+        ("LU", "Luck"),
+    ]
+
+    # Skills
+
+    BARTER = "BA"
+    ENERGY_WEAPONS = "EN"
+    EXPLOSIVES = "EX"
+    GUNS = "GU"
+    MEDICINE = "ME"
+    MELEE_WEAPONS = "ML"
+    REPAIR = "RE"
+    SCIENCE = "SC"
+    SNEAK = "SN"
+    SPEECH = "SP"
+    SURVIVAL = "SU"
+    UNARMED = "UN"
+
+    SKILL_CHOICES = [
+        ("BA", "Barter"),
+        ("EN", "Energy Weapons"),
+        ("EX", "Explosives"),
+        ("GU", "Guns"),
+        ("ME", "Medicine"),
+        ("ML", "Melee Weapons"),
+        ("RE", "Repair"),
+        ("SC", "Science"),
+        ("SN", "Sneak"),
+        ("SP", "Speech"),
+        ("SU", "Survival"),
+        ("UN", "Unarmed"),
+    ]
+
+    # ---------------------------------------------------------------------------------------------
+
     # Name of the perk.
     name = models.CharField(max_length=32)
 
@@ -16,17 +72,30 @@ class Perk(models.Model):
     level_req = models.IntegerField(default=1)
 
     # Name of SPECIAL skill requirement (optional)
-    special_skill_name = models.CharField(max_length=32, default="none")
+    special_skill_name = models.CharField(
+        max_length=2,
+        choices=SPECIAL_CHOICES,
+        default=STRENGTH,
+    )
+
     # Special skill requirement from 1-10.
     special_skill_req = models.IntegerField(default=0)
 
     # Name of first skill requirement (optional)
-    skill_1_name = models.CharField(max_length=32, default="none")
+    skill_1_name = models.CharField(
+        max_length=2,
+        choices=SKILL_CHOICES,
+        default=BARTER,
+    )
     # Required value from 1-100
     skill_1_req = models.IntegerField(default=0)
 
     # Name of first second requirement (optional)
-    skill_2_name = models.CharField(max_length=32, default="none")
+    skill_2_name = models.CharField(
+        max_length=2,
+        choices=SKILL_CHOICES,
+        default=BARTER,
+    )
     # Required value from 1-100
     skill_2_req = models.IntegerField(default=0)
 
