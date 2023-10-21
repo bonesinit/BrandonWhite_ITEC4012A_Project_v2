@@ -132,9 +132,8 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
     #       PERKS
     # ---------------------------------------------------------------------------------------------
-    # These are bonus abilities that a player earned on level up.
+    # These are bonus abilities that a player earned on level up. Each character has a list of perks.
 
-    # List of character's perks.
     perks = models.ManyToManyField(Perk)
 
     # ---------------------------------------------------------------------------------------------
@@ -142,10 +141,7 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
     # The character's physical health.
 
-    # Hit points
     hit_points = models.IntegerField(default=0)
-
-    # Rads
     rads = models.IntegerField(default=0, validators=[MaxValueValidator(1000), MinValueValidator(0)])
 
     # ---------------------------------------------------------------------------------------------
