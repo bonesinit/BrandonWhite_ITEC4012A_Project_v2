@@ -1,10 +1,67 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <h1>Fallout Tabletop App</h1>
+<h1>My really cool to-do app</h1>
+
+{% if user.is_authenticated %}
+    Welcome, {{ user.username }}!
+{% else %}
+    Welcome, Guest!
+{% endif %}
+{% if user.is_authenticated %}
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Sign Out">
+    </form>
+{% endif %}
+
+<!--
+<h2>List of tasks:</h2>
+<ul>
+    % for task in tasks %}
+       <li>
+           { task.description }}
+           % if task.completed %}
+              (Done)
+           % endif %}
+       </li>
+    % endfor %}
+</ul>
+
+<script>
+$(document).ready(function() {
+    $("#taskForm").submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '% url "create_task" %}',
+            data: $(this).serialize(),
+            success: function(response) {
+                if(response.status === 'ok') {
+                    $('ul').append('<li>' + response.task_description + '</li>');
+                    $("#taskForm")[0].reset();  // Clear the form fields
+                }
+            },
+            error: function(response) {
+                alert('Error: ' + response.responseJSON.errors);
+            }
+        });
+    });
+});
+</script>
+
+
+<form  id="taskForm" method="post"">
+    % csrf_token %}
+    { form.as_p }}
+    <button type="submit">Create Task</button>
+</form>-->
+
 </body>
 </html>
