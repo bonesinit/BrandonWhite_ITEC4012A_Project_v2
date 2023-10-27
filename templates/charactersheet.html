@@ -21,29 +21,10 @@
     </form>
 {% endif %}
 
-<h2>Select a character</h2>
-<ul>
-    {% for character in characters %}
-       <li>
-           {{ character.name }}
-       </li>
-    {% endfor %}
-</ul>
-
-<p><a href="newcharacter.html">Create a new character</a></p>
+<p><a href="../">Character select</a></p>
 
 <!--
-<h2>List of tasks:</h2>
-<ul>
-    % for task in tasks %}
-       <li>
-           { task.description }}
-           % if task.completed %}
-              (Done)
-           % endif %}
-       </li>
-    % endfor %}
-</ul>
+
 
 <script>
 $(document).ready(function() {

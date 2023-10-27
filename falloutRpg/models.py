@@ -145,6 +145,12 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
     # This is information that defines the character's history, appearance, and alignment.
 
+    # User
+    user = models.CharField(max_length=64, default="admin")
+
+    # Is character active?
+    active = models.BooleanField(default=False)
+
     # Name of character.
     name = models.CharField(max_length=64)
 
