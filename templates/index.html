@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>Fallout Tabletop RPG</h1>
+<h1>Fallout Tabletop</h1>
 
 {% if user.is_authenticated %}
     Welcome, {{ user.username }}!
@@ -22,6 +22,10 @@
 {% endif %}
 
 <h2>Select a character</h2>
+<p>Current character is [NAME].</p>
+<p><a href="charactersheet.html">Character sheet</a></p>
+
+<h3>My characters</h3>
 <ul>
     {% for character in characters %}
        <li>
@@ -30,6 +34,7 @@
     {% endfor %}
 </ul>
 
+<h2>Create a character</h2>
 <p><a href="newcharacter.html">Create a new character</a></p>
 
 <!--
