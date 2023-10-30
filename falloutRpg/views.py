@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
-from .models import Character, Inventory, Inventory_Item, Perk, Weapon, Armor
+from .models import Character, Inventory_Item, Perk, Weapon, Armor
 
 def login_page(request):
 
