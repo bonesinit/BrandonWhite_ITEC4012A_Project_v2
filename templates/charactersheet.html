@@ -106,6 +106,51 @@
                     {% endfor %}
                 </ul>
 
+            <h4>Armor</h4>
+                {% for armor in armors %}
+                    {% if armor.owner.name == character.name %}
+                        <p><strong>{{ armor.name }}</strong></p>
+                        <ul>
+                            <li><strong>Type:</strong> {{ armor.type }}</li>
+                            <li><strong>Effects:</strong> {{ armor.effects }}</li>
+                            <li><strong>Armor Class:</strong> {{ armor.armor_class }}</li>
+                            <li><strong>Damage Reduction:</strong> {{ armor.damage_reduction }}</li>
+                        </ul>
+                    {% else %}
+                        <p>Stark naked</p>
+                    {% endif %}
+                {% endfor %}
+
+        <h4>Weapons</h4>
+            {% for weapon in weapons %}
+                {% if weapon.owner.name == character.name %}
+                    <p><strong>{{ weapon.name }}</strong></p>
+                    <ul>
+                        <li><strong>Type:</strong> {{ weapon.type }}</li>
+                        <li><strong>Range:</strong> {{ weapon.range }}</li>
+                        <li><strong>Damage:</strong> {{ weapon.damage }}</li>
+                        {% if weapon.is_burst == True %}
+                            <li><strong>AP Cost Single Shot:</strong> {{ weapon.ap_cost_single }}</li>
+                            <li><strong>AP Cost Targeted Shot:</strong> {{ weapon.ap_cost_targeted }}</li>
+                            <li><strong>AP Cost Burst Shot:</strong> {{ weapon.ap_cost_burst }}</li>
+                            <li><strong>Ammo Count:</strong> {{ weapon.ammo_count }}</li>
+                            <li><strong>Ammo Type:</strong> {{ weapon.ammo_type }}</li>
+                            <li><strong>Ammo Per Shot:</strong> {{ weapon.ammo_per_shot }}</li>
+                            <li><strong>Ammo Per Burst:</strong> {{ weapon.ammo_per_burst }}</li>
+                        {% else %}
+                            <li><strong>AP Cost Single Shot:</strong> {{ weapon.ap_cost_single }}</li>
+                            <li><strong>AP Cost Targeted Shot:</strong> {{ weapon.ap_cost_targeted }}</li>
+                            <li><strong>Ammo Count:</strong> {{ weapon.ammo_count }}</li>
+                            <li><strong>Ammo Type:</strong> {{ weapon.ammo_type }}</li>
+                            <li><strong>Ammo Per Shot:</strong> {{ weapon.ammo_per_shot }}</li>
+                        {% endif %}
+                        <li><strong>Special Abilities:</strong> {{ weapon.special_abilities }}</li>
+                    </ul>
+                {% else %}
+                    <p>Unarmed</p>
+                {% endif %}
+            {% endfor %}
+
 
 
 
