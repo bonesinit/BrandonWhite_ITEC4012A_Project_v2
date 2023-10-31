@@ -13,56 +13,56 @@ class Perk(models.Model):
 
     # SPECIAL
 
-    STRENGTH = "ST"
-    PERCEPTION = "PE"
-    ENDURANCE = "EN"
-    CHARISMA = "CH"
-    INTELLIGENCE = "IN"
-    AGILITY = "AG"
-    LUCK = "LU"
-    NOT_REQUIRED_SPECIAL = "NA"
+    STRENGTH = "Strength"
+    PERCEPTION = "Perception"
+    ENDURANCE = "Endurance"
+    CHARISMA = "Charisma"
+    INTELLIGENCE = "Intelligence"
+    AGILITY = "Agility"
+    LUCK = "Luck"
+    NOT_REQUIRED_SPECIAL = "Not Required"
 
     SPECIAL_CHOICES = [
-        ("ST", "Strength"),
-        ("PE", "Perception"),
-        ("EN", "Endurance"),
-        ("CH", "Charisma"),
-        ("IN", "Intelligence"),
-        ("AG", "Agility"),
-        ("LU", "Luck"),
-        ("NA", "Not Required"),
+        ("Strength", "Strength"),
+        ("Perception", "Perception"),
+        ("Endurance", "Endurance"),
+        ("Charisma", "Charisma"),
+        ("Intelligence", "Intelligence"),
+        ("Agility", "Agility"),
+        ("Luck", "Luck"),
+        ("Not Required", "Not Required"),
     ]
 
     # Skills
 
-    BARTER = "BA"
-    ENERGY_WEAPONS = "EN"
-    EXPLOSIVES = "EX"
-    GUNS = "GU"
-    MEDICINE = "ME"
-    MELEE_WEAPONS = "ML"
-    REPAIR = "RE"
-    SCIENCE = "SC"
-    SNEAK = "SN"
-    SPEECH = "SP"
-    SURVIVAL = "SU"
-    UNARMED = "UN"
-    NOT_REQUIRED_SKILL = "NA"
+    BARTER = "Barter"
+    ENERGY_WEAPONS = "Energy Weapons"
+    EXPLOSIVES = "Explosives"
+    GUNS = "Guns"
+    MEDICINE = "Medicine"
+    MELEE_WEAPONS = "Melee Weapons"
+    REPAIR = "Repair"
+    SCIENCE = "Science"
+    SNEAK = "Sneak"
+    SPEECH = "Speech"
+    SURVIVAL = "Survival"
+    UNARMED = "Unarmed"
+    NOT_REQUIRED_SKILL = "Not Required"
 
     SKILL_CHOICES = [
-        ("BA", "Barter"),
-        ("EN", "Energy Weapons"),
-        ("EX", "Explosives"),
-        ("GU", "Guns"),
-        ("ME", "Medicine"),
-        ("ML", "Melee Weapons"),
-        ("RE", "Repair"),
-        ("SC", "Science"),
-        ("SN", "Sneak"),
-        ("SP", "Speech"),
-        ("SU", "Survival"),
-        ("UN", "Unarmed"),
-        ("NA", "Not Required"),
+        ("Barter", "Barter"),
+        ("Energy Weapons", "Energy Weapons"),
+        ("Explosives", "Explosives"),
+        ("Guns", "Guns"),
+        ("Medicine", "Medicine"),
+        ("Melee Weapons", "Melee Weapons"),
+        ("Repair", "Repair"),
+        ("Science", "Science"),
+        ("Sneak", "Sneak"),
+        ("Speech", "Speech"),
+        ("Survival", "Survival"),
+        ("Unarmed", "Unarmed"),
+        ("Not Required", "Not Required"),
     ]
 
     # ---------------------------------------------------------------------------------------------
@@ -78,7 +78,7 @@ class Perk(models.Model):
 
     # Name of first SPECIAL skill requirement (optional)
     special_skill_1_name = models.CharField(
-        max_length=2,
+        max_length=64,
         choices=SPECIAL_CHOICES,
         default=NOT_REQUIRED_SPECIAL,
     )
@@ -88,7 +88,7 @@ class Perk(models.Model):
 
     # Name of second SPECIAL skill requirement (optional)
     special_skill_2_name = models.CharField(
-        max_length=2,
+        max_length=64,
         choices=SPECIAL_CHOICES,
         default=NOT_REQUIRED_SPECIAL,
     )
@@ -98,7 +98,7 @@ class Perk(models.Model):
 
     # Name of first skill requirement (optional)
     skill_1_name = models.CharField(
-        max_length=2,
+        max_length=64,
         choices=SKILL_CHOICES,
         default=NOT_REQUIRED_SKILL,
     )
@@ -107,7 +107,7 @@ class Perk(models.Model):
 
     # Name of first second requirement (optional)
     skill_2_name = models.CharField(
-        max_length=2,
+        max_length=64,
         choices=SKILL_CHOICES,
         default=NOT_REQUIRED_SKILL,
     )
@@ -126,18 +126,18 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
 
     # Karma
-    VERY_GOOD = "VG"
-    GOOD = "GO"
-    NEUTRAL = "NE"
-    EVIL = "EV"
-    VERY_EVIL = "VE"
+    VERY_GOOD = "Very Good"
+    GOOD = "Good"
+    NEUTRAL = "Neutral"
+    EVIL = "Evil"
+    VERY_EVIL = "Very Evil"
 
     KARMA_CHOICES = [
-        ("VG", "Very Good"),
-        ("GO", "Good"),
-        ("NE", "Neutral"),
-        ("EV", "Evil"),
-        ("VE", "Very Evil"),
+        ("Very Good", "Very Good"),
+        ("Good", "Good"),
+        ("Neutral", "Neutral"),
+        ("Evil", "Evil"),
+        ("Very Evil", "Very Evil"),
     ]
 
     # ---------------------------------------------------------------------------------------------
@@ -162,7 +162,7 @@ class Character(models.Model):
 
     # Character karma alignment.
     karma = models.CharField(
-        max_length=2,
+        max_length=64,
         choices=KARMA_CHOICES,
         default=NEUTRAL,
     )
@@ -271,29 +271,29 @@ class Weapon(models.Model):
     # ---------------------------------------------------------------------------------------------
 
     # Range of weapon
-    CLOSE = "CL"
-    SHORT = "SH"
-    MEDIUM = "ME"
-    LONG = "LO"
+    CLOSE = "Close"
+    SHORT = "Short"
+    MEDIUM = "Medium"
+    LONG = "Long"
 
     RANGE_CHOICES = [
-        ("CL", "Close"),
-        ("SH", "Short"),
-        ("ME", "Medium"),
-        ("LO", "Long"),
+        ("Close", "Close"),
+        ("Short", "Short"),
+        ("Medium", "Medium"),
+        ("Long", "Long"),
     ]
 
     # Type of weapon
-    ENERGY = "EN"
-    GUNS = "GU"
-    MELEE = "ME"
-    UNARMED = "UN"
+    ENERGY = "Energy"
+    GUNS = "Guns"
+    MELEE = "Melee"
+    UNARMED = "Unarmed"
 
     TYPE_CHOICES = [
-        ("EN", "Energy"),
-        ("GU", "Guns"),
-        ("ME", "Melee"),
-        ("UN", "Unarmed"),
+        ("Energy", "Energy"),
+        ("Guns", "Guns"),
+        ("Melee", "Melee"),
+        ("Unarmed", "Unarmed"),
     ]
 
     # ---------------------------------------------------------------------------------------------
@@ -306,14 +306,14 @@ class Weapon(models.Model):
 
     # Type of weapon
     type = models.CharField(
-        max_length=2,
+        max_length=64,
         choices=TYPE_CHOICES,
         default=ENERGY,
     )
 
     # Range of weapon (close is melee range)
     range = models.CharField(
-        max_length=2,
+        max_length=64,
         choices=RANGE_CHOICES,
         default=CLOSE,
     )
@@ -349,16 +349,16 @@ class Armor(models.Model):
     # ---------------------------------------------------------------------------------------------
 
     # Type of weapon
-    UNARMORED = "UN"
-    LIGHT = "LI"
-    MEDIUM = "ME"
-    HEAVY = "HE"
+    UNARMORED = "Unarmored"
+    LIGHT = "Light"
+    MEDIUM = "Medium"
+    HEAVY = "Heavy"
 
     TYPE_CHOICES = [
-        ("UN", "Unarmored"),
-        ("LI", "Light"),
-        ("ME", "Medium"),
-        ("HE", "Heavy"),
+        ("Unarmored", "Unarmored"),
+        ("Light", "Light"),
+        ("Medium", "Medium"),
+        ("Heavy", "Heavy"),
     ]
 
     # ---------------------------------------------------------------------------------------------
@@ -371,7 +371,7 @@ class Armor(models.Model):
 
     # Type of armor. Med reduces agility by 1, heavy reduces agility by 2
     type = models.CharField(
-        max_length=2,
+        max_length=64,
         choices=TYPE_CHOICES,
         default=UNARMORED,
     )
