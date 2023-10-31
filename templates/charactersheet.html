@@ -83,7 +83,9 @@
 
             <h4>Perks</h4>
                 <ul>
-                    <li>{{ character.perks.name }}</li>
+                    {% for char_perk_name in char_perk_names %}
+                        <li>{{ char_perk_name }}</li>
+                    {% endfor %}
                 </ul>
 
             <h4>Health and Effects</h4>

@@ -18,11 +18,13 @@ def charactersheet(request):
     weapons = Weapon.objects.filter()
     armors = Armor.objects.filter()
 
+    char_perk_names = Character.objects.filter(active=True).values_list("perks__name")
+
     # Fetch Form from Forms
     # form = TaskForm()
 
     # Insert Model Data into Template, Run Template Code, and Return to Client
-    return render(request, 'charactersheet.html', {'characters': characters, 'items': items, 'perks': perks, 'weapons': weapons, 'armors': armors})
+    return render(request, 'charactersheet.html', {'characters': characters, 'items': items, 'perks': perks, 'weapons': weapons, 'armors': armors, 'char_perk_names': char_perk_names})
 
 @login_required()
 def newcharacter(request):

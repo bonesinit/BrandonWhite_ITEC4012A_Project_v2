@@ -38,6 +38,11 @@
     {% for character in characters %}
        <li>
            {{ character.name }}
+           {% if character.active == True %}
+               <em> (Currently active)</em>
+           {% else %}
+               <em> (Not active)</em>
+           {% endif %}
        </li>
     {% endfor %}
 </ul>
