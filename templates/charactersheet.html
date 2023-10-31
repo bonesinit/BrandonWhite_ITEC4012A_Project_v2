@@ -26,6 +26,98 @@
 
 <h2>Character Sheet</h2>
 
+{% for character in characters %}
+    {% if character.active == True %}
+        <h3>{{ character.name }}</h3>
+
+            <h4>General Information</h4>
+
+                <h5>Description</h5>
+                    <p>{{ character.description }}</p>
+
+                <h5>Backstory</h5>
+                    <p>{{ character.backstory }}</p>
+
+                <h5>Karma</h5>
+                    <p>{{ character.karma }}</p>
+
+                <h5>Level</h5>
+                    <p>{{ character.level }}</p>
+
+            <h4>Primary Statistics</h4>
+
+                <h5>S.P.E.C.I.A.L. Stats</h5>
+                    <ul>
+                        <li><strong>Strength:</strong> {{ character.stat_strength }}</li>
+                        <li><strong>Perception:</strong> {{ character.stat_perception }}</li>
+                        <li><strong>Endurance:</strong> {{ character.stat_endurance }}</li>
+                        <li><strong>Charisma:</strong> {{ character.stat_charisma }}</li>
+                        <li><strong>Intelligence:</strong> {{ character.stat_intelligence }}</li>
+                        <li><strong>Agility:</strong> {{ character.stat_agility }}</li>
+                        <li><strong>Luck:</strong> {{ character.stat_luck }}</li>
+                    </ul>
+
+                <h5>Skills</h5>
+                    <ul>
+                        <li><strong>Barter:</strong> {{ character.skill_barter }}</li>
+                        <li><strong>Energy Weapons:</strong> {{ character.skill_energy_weapons }}</li>
+                        <li><strong>Explosives:</strong> {{ character.skill_explosives }}</li>
+                        <li><strong>Guns:</strong> {{ character.skill_guns }}</li>
+                        <li><strong>Medicine:</strong> {{ character.skill_medicine }}</li>
+                        <li><strong>Melee Weapons:</strong> {{ character.skill_melee_weapons }}</li>
+                        <li><strong>Repair:</strong> {{ character.skill_repair }}</li>
+                        <li><strong>Science:</strong> {{ character.skill_science }}</li>
+                        <li><strong>Sneak:</strong> {{ character.skill_sneak }}</li>
+                        <li><strong>Speech:</strong> {{ character.skill_speech }}</li>
+                        <li><strong>Survival:</strong> {{ character.skill_survival}}</li>
+                        <li><strong>Unarmed:</strong> {{ character.skill_unarmed }}</li>
+                    </ul>
+
+            <h4>Secondary Statistics</h4>
+                <ul>
+                    <li><strong>Action Points:</strong> {{ character.action_points }}</li>
+                    <li><strong>Poison Resistance:</strong> {{ character.poison_resistance}}</li>
+                    <li><strong>Radiation Resistance:</strong> {{ character.radiation_resistance }}</li>
+                    <li><strong>Critical Chance:</strong> {{ character.critical_chance }}</li>
+                </ul>
+
+            <h4>Perks</h4>
+                <ul>
+                    <li>{{ character.perks.name }}</li>
+                </ul>
+
+            <h4>Health and Effects</h4>
+                <ul>
+                    <li><strong>Hit Points:</strong> {{ character.hit_points }}</li>
+                    <li><strong>Base Armor:</strong> {{ character.base_armor }}</li>
+                    <li><strong>Rads:</strong> {{ character.rads }}</li>
+                    <li><strong>Rad Effects:</strong> {{ character.rad_effects }}</li>
+                    <li><strong>Other Effects:</strong> {{ character.other_effects }}</li>
+                </ul>
+
+            <h4>Inventory</h4>
+                <ul>
+                    {% for item in items %}
+                        {% if item.owner.name == character.name %}
+                            <li>{{ item.name }}</li>
+                        {% else %}
+                            <li>Character has no items!</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+
+
+
+
+
+
+
+
+    {% else %}
+            There is no character currently active. What did you do?
+    {% endif %}
+{% endfor %}
+
 
 
 </body>

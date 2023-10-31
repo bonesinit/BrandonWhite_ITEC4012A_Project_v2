@@ -22,7 +22,15 @@
 {% endif %}
 
 <h2>Select a character</h2>
-<p>Current character is [NAME].</p>
+<p>
+    {% for character in characters %}
+        {% if character.active == True %}
+           Current character is <strong>{{ character.name }}</strong>.
+        {% else %}
+            There is no character currently active.
+        {% endif %}
+    {% endfor %}
+</p>
 <p><a href="charactersheet.html">Character sheet</a></p>
 
 <h3>My characters</h3>

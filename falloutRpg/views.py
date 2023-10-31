@@ -12,13 +12,17 @@ def login_page(request):
 @login_required()
 def charactersheet(request):
 
-    characters = Character.objects.filter(user=request.user)
+    characters = Character.objects.filter(active=True)
+    items = Inventory_Item.objects.filter()
+    perks = Perk.objects.filter()
+    weapons = Weapon.objects.filter()
+    armors = Armor.objects.filter()
 
     # Fetch Form from Forms
     # form = TaskForm()
 
     # Insert Model Data into Template, Run Template Code, and Return to Client
-    return render(request, 'charactersheet.html', {'characters': characters})
+    return render(request, 'charactersheet.html', {'characters': characters, 'items': items, 'perks': perks, 'weapons': weapons, 'armors': armors})
 
 @login_required()
 def newcharacter(request):
