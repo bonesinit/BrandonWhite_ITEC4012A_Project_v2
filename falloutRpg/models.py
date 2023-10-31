@@ -236,8 +236,8 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
     # Radiation, combat effects, chem effects
 
-    rad_effects = models.CharField(max_length=64)
-    other_effects = models.CharField(max_length=256)
+    rad_effects = models.CharField(max_length=64, default="None")
+    other_effects = models.CharField(max_length=256, default="None")
 
     # ---------------------------------------------------------------------------------------------
     #       LEVELING

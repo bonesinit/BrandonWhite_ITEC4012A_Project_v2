@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Character Sheet</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -32,17 +32,17 @@
 
             <h4>General Information</h4>
 
+                <p><strong>Level:</strong> {{ character.level }}</p>
+                <p><strong>Karma:</strong> {{ character.karma }}</p>
+
                 <h5>Description</h5>
                     <p>{{ character.description }}</p>
 
                 <h5>Backstory</h5>
                     <p>{{ character.backstory }}</p>
 
-                <h5>Karma</h5>
-                    <p>{{ character.karma }}</p>
 
-                <h5>Level</h5>
-                    <p>{{ character.level }}</p>
+
 
             <h4>Primary Statistics</h4>
 
@@ -101,7 +101,7 @@
                 <ul>
                     {% for item in items %}
                         {% if item.owner.name == character.name %}
-                            <li>{{ item.name }}</li>
+                            <li>Name: {{ item.name }}, Value: {{ item.value }}, Notes: {{ item.notes }}</li>
                         {% else %}
                             <li>Character has no items!</li>
                         {% endif %}

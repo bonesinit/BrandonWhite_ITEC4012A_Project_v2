@@ -23,37 +23,11 @@
 
 <p><a href="../">Character select</a></p>
 
-<!--
+<h2>Create a Character</h2>
+
+<p>Calculating starting values:</p>
 
 
-<script>
-$(document).ready(function() {
-    $("#taskForm").submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            type: 'POST',
-            url: '% url "create_task" %}',
-            data: $(this).serialize(),
-            success: function(response) {
-                if(response.status === 'ok') {
-                    $('ul').append('<li>' + response.task_description + '</li>');
-                    $("#taskForm")[0].reset();  // Clear the form fields
-                }
-            },
-            error: function(response) {
-                alert('Error: ' + response.responseJSON.errors);
-            }
-        });
-    });
-});
-</script>
-
-
-<form  id="taskForm" method="post"">
-    % csrf_token %}
-    { form.as_p }}
-    <button type="submit">Create Task</button>
-</form>-->
 
 </body>
 </html>
