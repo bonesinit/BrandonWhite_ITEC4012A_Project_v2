@@ -207,13 +207,13 @@ class Character(models.Model):
     # These are statistics derived from the player's SPECIAL (primary) statistics.
     # Action Points, Poison Resistance, Radiation Resistance, Critical Chance (%)
 
-    action_points = models.IntegerField(default=1)
+    action_points = models.IntegerField(default=60)
 
     poison_resistance = models.IntegerField(default=0, validators=[MaxValueValidator(85), MinValueValidator(0)])
 
     radiation_resistance = models.IntegerField(default=0, validators=[MaxValueValidator(85), MinValueValidator(0)])
 
-    critical_chance = models.IntegerField(default=1)
+    critical_chance = models.IntegerField(default=5)
 
     # ---------------------------------------------------------------------------------------------
     #       PERKS
@@ -227,7 +227,7 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
     # The character's physical health, base armor class, and rads.
 
-    hit_points = models.IntegerField(default=0)
+    hit_points = models.IntegerField(default=1)
     base_armor = models.IntegerField(default=0)
     rads = models.IntegerField(default=0, validators=[MaxValueValidator(1000), MinValueValidator(0)])
 
