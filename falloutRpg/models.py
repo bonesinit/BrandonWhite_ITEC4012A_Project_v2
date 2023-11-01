@@ -192,6 +192,7 @@ class Character(models.Model):
     skill_energy_weapons = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     skill_explosives = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     skill_guns = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
+    skill_lockpick = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     skill_medicine = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     skill_melee_weapons = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
     skill_repair = models.IntegerField(default=1, validators=[MaxValueValidator(100), MinValueValidator(1)])
