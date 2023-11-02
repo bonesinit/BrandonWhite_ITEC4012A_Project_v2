@@ -42,6 +42,10 @@
                <em> (Currently active)</em>
            {% else %}
                <em> (Not active)</em>
+               <form action="/switch_character/" method="post">
+                    {% csrf_token %}
+                    <input name="switcher" type="submit" value="{{ character.name }}">
+                </form>
            {% endif %}
        </li>
     {% endfor %}

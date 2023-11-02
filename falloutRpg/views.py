@@ -1,9 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
-from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from .models import Character, Inventory_Item, Perk, Weapon, Armor
+from django.http import JsonResponse
 from .forms import CharacterCreationForm
 
 def login_page(request):
@@ -21,18 +21,15 @@ def charactersheet(request):
 
     char_perk_names = Character.objects.filter(active=True).values_list("perks__name")
 
-    # Fetch Form from Forms
-    # form = TaskForm()
-
-    # Insert Model Data into Template, Run Template Code, and Return to Client
     return render(request, 'charactersheet.html', {'characters': characters, 'items': items, 'perks': perks, 'weapons': weapons, 'armors': armors, 'char_perk_names': char_perk_names})
 
 @login_required()
 def newcharacter(request):
 
     characters = Character.objects.filter(user=request.user)
+    form = CharacterCreationForm()
 
-    return render(request, 'newcharacter.html', {'characters': characters})
+    return render(request, 'newcharacter.html', {'characters': characters, 'form': form})
 
 @login_required()
 def index(request):
@@ -50,6 +47,50 @@ def create_character(request):
         character = form.save(commit=False)
         character.user = request.user
         character.save()
-        return JsonResponse({'status': 'ok', 'character_name': character.name})
+        return HttpResponse("Success!")
+
     else:
-        return JsonResponse({'status': 'error', 'errors': form.errors}, status=400)
+        form = CharacterCreationForm()
+
+    return render(request, "newcharacter.html", {"form": form})
+
+@login_required
+@require_POST
+def switch_character(request):
+
+    characters = Character.objects.filter(user=request.user)
+    character_to_switch = request.POST.get("switcher", "")
+
+    for character in characters:
+        if character.active == True:
+            character.active = False
+            character.save()
+
+        elif character.name == character_to_switch:
+            character.active = True
+            character.save()
+            return HttpResponse("Success!")
+
+    return render(request, "index.html")
+
+# LevelUpForm
+
+# AddInventoryForm
+
+# AddWeaponForm
+
+# AddArmorForm
+
+# UpdateCNDForm
+
+# UpdateAmmoForm
+
+# switch character
+
+# Delete character
+
+# Delete inventory item
+
+# Delete weapon
+
+# Delete armor

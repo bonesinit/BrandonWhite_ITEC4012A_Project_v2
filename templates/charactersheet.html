@@ -102,7 +102,7 @@
                 <ul>
                     {% for item in items %}
                         {% if item.owner.name == character.name %}
-                            <li>Name: {{ item.name }}, Value: {{ item.value }}, Notes: {{ item.notes }}</li>
+                            <li>Quantity: {{ item.quantity }}, Name: {{ item.name }}, Value: {{ item.value }}, Notes: {{ item.notes }}</li>
                         {% else %}
                             <li>Character has no items!</li>
                         {% endif %}
@@ -132,7 +132,7 @@
                         <li><strong>Type:</strong> {{ weapon.type }}</li>
                         <li><strong>Range:</strong> {{ weapon.range }}</li>
                         <li><strong>Damage:</strong> {{ weapon.damage }}</li>
-                        {% if weapon.is_burst == True %}
+                        {% if weapon.is_burst == True and weapon.type != "Melee" %}
                             <li><strong>AP Cost Single Shot:</strong> {{ weapon.ap_cost_single }}</li>
                             <li><strong>AP Cost Targeted Shot:</strong> {{ weapon.ap_cost_targeted }}</li>
                             <li><strong>AP Cost Burst Shot:</strong> {{ weapon.ap_cost_burst }}</li>
@@ -140,12 +140,15 @@
                             <li><strong>Ammo Type:</strong> {{ weapon.ammo_type }}</li>
                             <li><strong>Ammo Per Shot:</strong> {{ weapon.ammo_per_shot }}</li>
                             <li><strong>Ammo Per Burst:</strong> {{ weapon.ammo_per_burst }}</li>
-                        {% else %}
+                        {% elif weapon.type != "Melee" %}
                             <li><strong>AP Cost Single Shot:</strong> {{ weapon.ap_cost_single }}</li>
                             <li><strong>AP Cost Targeted Shot:</strong> {{ weapon.ap_cost_targeted }}</li>
                             <li><strong>Ammo Count:</strong> {{ weapon.ammo_count }}</li>
                             <li><strong>Ammo Type:</strong> {{ weapon.ammo_type }}</li>
                             <li><strong>Ammo Per Shot:</strong> {{ weapon.ammo_per_shot }}</li>
+                        {% else %}
+                            <li><strong>AP Cost Single Shot:</strong> {{ weapon.ap_cost_single }}</li>
+                            <li><strong>AP Cost Targeted Shot:</strong> {{ weapon.ap_cost_targeted }}</li>
                         {% endif %}
                         <li><strong>Special Abilities:</strong> {{ weapon.special_abilities }}</li>
                     </ul>
@@ -153,13 +156,6 @@
                     <p>Unarmed</p>
                 {% endif %}
             {% endfor %}
-
-
-
-
-
-
-
 
     {% else %}
             No characters :(

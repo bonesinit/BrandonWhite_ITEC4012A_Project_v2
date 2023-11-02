@@ -391,6 +391,7 @@ class Armor(models.Model):
 
 class Inventory_Item(models.Model):
     owner = models.ForeignKey(Character, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
     name = models.CharField(max_length=128)
     value = models.IntegerField(default=0)
     notes = models.CharField(max_length=256)

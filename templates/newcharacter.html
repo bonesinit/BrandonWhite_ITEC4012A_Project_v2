@@ -25,7 +25,13 @@
 
 <h2>Create a Character</h2>
 
-<p>tag 3 skills, initial values</p>
+<p>You must tag 3 skills as favourites by adding +15 skill points to them.</p>
+
+<form action="/create_character/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Create Character">
+</form>
 
 </body>
 </html>
