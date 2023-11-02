@@ -98,16 +98,26 @@
                     <li><strong>Other Effects:</strong> {{ character.other_effects }}</li>
                 </ul>
 
+                <form action="/update_cnd/" method="post">
+                    {% csrf_token %}
+                    {{ update_cnd_form }}
+                    <input type="submit" value="Update Condition">
+                </form>
+
             <h4>Inventory</h4>
                 <ul>
                     {% for item in items %}
                         {% if item.owner.name == character.name %}
                             <li>Quantity: {{ item.quantity }}, Name: {{ item.name }}, Value: {{ item.value }}, Notes: {{ item.notes }}</li>
-                        {% else %}
-                            <li>Character has no items!</li>
                         {% endif %}
                     {% endfor %}
                 </ul>
+
+                <form action="/add_inventory/" method="post">
+                    {% csrf_token %}
+                    {{ add_inventory_form }}
+                    <input type="submit" value="Add Item">
+                </form>
 
             <h4>Armor</h4>
                 {% for armor in armors %}
@@ -119,10 +129,15 @@
                             <li><strong>Armor Class:</strong> {{ armor.armor_class }}</li>
                             <li><strong>Damage Reduction:</strong> {{ armor.damage_reduction }}</li>
                         </ul>
-                    {% else %}
-                        <p>Stark naked</p>
+
                     {% endif %}
                 {% endfor %}
+
+                <form action="/add_armor/" method="post">
+                    {% csrf_token %}
+                    {{ add_armor_form }}
+                    <input type="submit" value="Add Armor">
+                </form>
 
         <h4>Weapons</h4>
             {% for weapon in weapons %}
@@ -140,22 +155,37 @@
                             <li><strong>Ammo Type:</strong> {{ weapon.ammo_type }}</li>
                             <li><strong>Ammo Per Shot:</strong> {{ weapon.ammo_per_shot }}</li>
                             <li><strong>Ammo Per Burst:</strong> {{ weapon.ammo_per_burst }}</li>
+                            <form action="/update_ammo/" method="post">
+                                {% csrf_token %}
+                                {{ update_ammo_form }}
+                                <input type="submit" value="{{ weapon.id }}" name="Update Ammo">
+                            </form>
                         {% elif weapon.type != "Melee" %}
                             <li><strong>AP Cost Single Shot:</strong> {{ weapon.ap_cost_single }}</li>
                             <li><strong>AP Cost Targeted Shot:</strong> {{ weapon.ap_cost_targeted }}</li>
                             <li><strong>Ammo Count:</strong> {{ weapon.ammo_count }}</li>
                             <li><strong>Ammo Type:</strong> {{ weapon.ammo_type }}</li>
                             <li><strong>Ammo Per Shot:</strong> {{ weapon.ammo_per_shot }}</li>
+                            <form action="/update_ammo/" method="post">
+                                {% csrf_token %}
+                                {{ update_ammo_form }}
+                                <input type="submit" value="{{ weapon.id }}" name="Update Ammo">
+                            </form>
                         {% else %}
                             <li><strong>AP Cost Single Shot:</strong> {{ weapon.ap_cost_single }}</li>
                             <li><strong>AP Cost Targeted Shot:</strong> {{ weapon.ap_cost_targeted }}</li>
                         {% endif %}
                         <li><strong>Special Abilities:</strong> {{ weapon.special_abilities }}</li>
                     </ul>
-                {% else %}
-                    <p>Unarmed</p>
+
                 {% endif %}
             {% endfor %}
+
+            <form action="/add_weapon/" method="post">
+                {% csrf_token %}
+                {{ add_weapon_form }}
+                <input type="submit" value="Add Weapon">
+            </form>
 
     {% else %}
             No characters :(

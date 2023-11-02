@@ -26,8 +26,6 @@
     {% for character in characters %}
         {% if character.active == True %}
            Current character is <strong>{{ character.name }}</strong>.
-        {% else %}
-            There is no character currently active.
         {% endif %}
     {% endfor %}
 </p>
@@ -44,7 +42,7 @@
                <em> (Not active)</em>
                <form action="/switch_character/" method="post">
                     {% csrf_token %}
-                    <input name="switcher" type="submit" value="{{ character.name }}">
+                    <input name="switcher" type="submit" value="{{ character.id }}">
                 </form>
            {% endif %}
        </li>

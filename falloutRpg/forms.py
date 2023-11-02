@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import Character, Inventory_Item, Perk, Weapon, Armor
 from django.utils.translation import gettext_lazy as _
 
+
 # Lives on newcharacter.html
 class CharacterCreationForm(forms.ModelForm):
     class Meta:
@@ -102,6 +103,7 @@ class CharacterCreationForm(forms.ModelForm):
             "hit_points": _("Initial level = 95 + (Endurance x 20) + (Level x 5)"),
         }
 
+
 # Lives on levelup.html
 class LevelUpForm(forms.ModelForm):
     class Meta:
@@ -196,6 +198,7 @@ class LevelUpForm(forms.ModelForm):
             "base_armor": _("Base Armor"),
         }
 
+
 # Lives on charactersheet.html
 class AddInventoryForm(forms.ModelForm):
     class Meta:
@@ -224,6 +227,7 @@ class AddInventoryForm(forms.ModelForm):
             "value": _("Value of item (in caps)."),
             "notes": _("Special purpose or abilities of item."),
         }
+
 
 # Lives on charactersheet.html
 class AddWeaponForm(forms.ModelForm):
@@ -280,6 +284,7 @@ class AddWeaponForm(forms.ModelForm):
             "special_abilities": _("Any special abilities the weapon may have."),
         }
 
+
 # Lives on charactersheet.html
 class AddArmorForm(forms.ModelForm):
     class Meta:
@@ -311,6 +316,7 @@ class AddArmorForm(forms.ModelForm):
             "damage_reduction": _("Damage Reduction"),
         }
 
+
 # Lives on charactersheet.html
 class UpdateCNDForm(forms.ModelForm):
     class Meta:
@@ -334,4 +340,21 @@ class UpdateCNDForm(forms.ModelForm):
             "rads": _("Character's radiation level."),
             "rad_effects": _("Debuffs from radiation level."),
             "other_effects": _("Effects from chems, poison, or other external factors."),
+        }
+
+
+# Lives on charactersheet.html
+class UpdateAmmoForm(forms.ModelForm):
+    class Meta:
+        model = Weapon
+        fields = [
+            "ammo_count",
+        ]
+
+        labels = {
+            "ammo_count": _("Ammo count"),
+        }
+
+        help_texts = {
+            "ammo_count": _("How much ammo the character has left for this weapon."),
         }

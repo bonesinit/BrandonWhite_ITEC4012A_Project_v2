@@ -221,7 +221,7 @@ class Character(models.Model):
     # ---------------------------------------------------------------------------------------------
     # These are bonus abilities that a player earned on level up. Each character has a list of perks.
 
-    perks = models.ManyToManyField(Perk)
+    perks = models.ManyToManyField(Perk, blank=True)
 
     # ---------------------------------------------------------------------------------------------
     #       CONDITION
