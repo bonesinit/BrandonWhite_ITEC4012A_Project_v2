@@ -49,6 +49,16 @@ For my project, I decided to make a tool that players could use while playing a 
   <li>Automatic initial skill calculations based off of your primary statistics.</li>
 </ol>
 
+### Not implemented
+<hr>
+<p>I mentioned these in my backend proposal, but did not implement them:</p>
+<ol>
+  <li><strong>User Registration:</strong> Mentioned above, I just couldn't figure it out. I want to have it for the final deliverable.</li> 
+  <li><strong>Traits:</strong> Traits and perks are basically the same thing and are an optional feature. I decided it wasn't really needed.</li>
+  <li><strong>Generate starter inventory based off tagged skills:</strong> Honestly, I just didn't have time and this seems like more of a "nice to have" than a "necessary".</li>
+  <li><strong>Delete characters, items, weapons, armor:</strong> Honestly. <a href="https://www.tumblr.com/arthistorydoesntalwayssuck/54084168769/idratherstayin-besturlonhere-june-7th-1942">Just remembered right now...</a> going to try to add it in for the final.</li>
+</ol>
+
 ## Setup
 <hr>
 <p>This is how I got it running on my second PC:</p>
