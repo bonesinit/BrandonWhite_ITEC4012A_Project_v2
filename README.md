@@ -51,6 +51,29 @@ For my project, I decided to make a tool that players could use while playing a 
 
 ## Setup
 <hr>
+<p>This is how I got it running on my second PC:</p>
+
+<ol>
+  <li>Download the repository.</li>
+  <li>Unzip, and place in "users/yourname/pycharmProjects" folder.</li>
+  <li>Open project in PyCharm.</li>
+  <li>When the popup saying the database is not connected (bottom right hand corner) click the link on it.
+  <ol type="a">
+    <li>Download drivers if prompted.</li>
+    <li>Test connection.</li>
+    <li>Rejoice.</li>
+  </ol>
+  </li>
+  <li>Back in the main window, in the top right, click the button lablled "Current file" to open the drop down menu, then click "Edit configurations".
+  <ol type="a">
+    <li>Add Configuration > Django Server</li>
+    <li>Add Python Interpreter > Python 3.X.X </li>
+  </ol>
+  </li>
+  <li>Run the server. Use the test accounts listed below.</li>
+</ol>
+
+I really hope this works for you, it worked flawless for me so I'm keeping my fingers crossed and knocking on wood and all that.
 
 ## Test Accounts
 <hr>
