@@ -1,9 +1,8 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from .models import Character, Inventory_Item, Perk, Weapon, Armor
-from django.http import JsonResponse
 from .forms import CharacterCreationForm, AddInventoryForm, AddWeaponForm, AddArmorForm, UpdateCNDForm, LevelUpForm, UpdateAmmoForm
 
 
@@ -45,6 +44,25 @@ def charactersheet(request):
                    }
                   )
 
+
+@login_required()
+def levelup(request):
+
+    characters = Character.objects.filter(active=True)
+    perks = Perk.objects.filter()
+
+    level_up_form = LevelUpForm()
+
+    char_perk_names = Character.objects.filter(active=True).values_list("perks__name")
+
+    return render(
+        request, 'levelup.html',
+                  {'characters': characters,
+                   'perks': perks,
+                   'char_perk_names': char_perk_names,
+                   'level_up_form': level_up_form,
+                   }
+                  )
 
 @login_required()
 def newcharacter(request):
@@ -179,6 +197,7 @@ def update_ammo(request):
     for weapon in weapons:
 
         if str(weapon.id) == weapon_to_update:
+
             if update_ammo_form.is_valid():
 
                 weapon.ammo_count = request.POST.get("ammo_count", "")
@@ -191,9 +210,46 @@ def update_ammo(request):
     return render(request, "charactersheet.html", {"update_ammo_form": update_ammo_form})
 
 
+@login_required
+@require_POST
+def level_up_time(request):
 
+    characters = Character.objects.filter(user=request.user)
+    level_up_form = LevelUpForm(request.POST)
+    character_to_update = request.POST.get("Level Up", "")
 
-# LevelUpForm
+    for character in characters:
+
+        if str(character.id) == character_to_update:
+
+            if level_up_form.is_valid():
+                character.level = request.POST.get("level", "")
+
+                character.skill_barter = request.POST.get("skill_barter", "")
+                character.skill_energy_weapons = request.POST.get("skill_energy_weapons", "")
+                character.skill_explosives = request.POST.get("skill_explosives", "")
+                character.skill_guns = request.POST.get("skill_guns", "")
+                character.skill_lockpick = request.POST.get("skill_lockpick", "")
+                character.skill_medicine = request.POST.get("skill_medicine", "")
+                character.skill_melee_weapons = request.POST.get("skill_melee_weapons", "")
+                character.skill_repair = request.POST.get("skill_repair", "")
+                character.skill_science = request.POST.get("skill_science", "")
+                character.skill_sneak = request.POST.get("skill_sneak", "")
+                character.skill_speech = request.POST.get("skill_speech", "")
+                character.skill_survival = request.POST.get("skill_survival", "")
+                character.skill_unarmed = request.POST.get("skill_unarmed", "")
+
+                character.hit_points = request.POST.get("hit_points", "")
+
+                # character.perks = request.POST.get("perks", "")
+
+                character.save()
+                return HttpResponse("Success!")
+
+    else:
+        level_up_form = LevelUpForm()
+
+    return render(request, "levelup.html", {"level_up_form": level_up_form})
 
 
 # Delete character

@@ -109,13 +109,7 @@ class LevelUpForm(forms.ModelForm):
     class Meta:
         model = Character
         fields = [
-            "stat_strength",
-            "stat_perception",
-            "stat_endurance",
-            "stat_charisma",
-            "stat_intelligence",
-            "stat_agility",
-            "stat_luck",
+            "level",
             "skill_barter",
             "skill_energy_weapons",
             "skill_explosives",
@@ -129,23 +123,12 @@ class LevelUpForm(forms.ModelForm):
             "skill_speech",
             "skill_survival",
             "skill_unarmed",
-            "action_points",
-            "poison_resistance",
-            "radiation_resistance",
-            "critical_chance",
             "hit_points",
             "perks",
-            "base_armor",
         ]
 
         labels = {
-            "stat_strength": _("Strength"),
-            "stat_perception": _("Perception"),
-            "stat_endurance": _("Endurance"),
-            "stat_charisma": _("Charisma"),
-            "stat_intelligence": _("Intelligence"),
-            "stat_agility": _("Agility"),
-            "stat_luck": _("Luck"),
+            "level": _("Level"),
             "skill_barter": _("Barter"),
             "skill_energy_weapons": _("Energy Weapons"),
             "skill_explosives": _("Explosives"),
@@ -159,22 +142,12 @@ class LevelUpForm(forms.ModelForm):
             "skill_speech": _("Speech"),
             "skill_survival": _("Survival"),
             "skill_unarmed": _("Unarmed"),
-            "action_points": _("Action Points"),
-            "poison_resistance": _("Poison Resistance"),
-            "radiation_resistance": _("Radiation Resistance"),
-            "critical_chance'": _("Critical Chance"),
             "hit_points": _("Hit Points"),
             "perks": _("Perks"),
-            "base_armor": _("Base Armor"),
         }
 
         help_texts = {
-            "stat_strength": _("A measure of your raw physical strength."),
-            "stat_perception": _("How well you use your five senses, and also pertains to a 'sixth sense'."),
-            "stat_endurance": _("Your health and overall physical fitness."),
-            "stat_charisma": _("	Your overall attractiveness and likeability."),
-            "stat_intelligence": _("Your basic intellect, curiosity in the world and adeptness at critical thinking."),
-            "stat_agility": _("A measure of your quickness and dexterity."),
+            "level": _("Your character's overall level."),
             "stat_luck": _("How often good things happen to you by chance."),
             "skill_barter": _("Initial level = 2 + (Charisma x 2) + (Luck / 2)"),
             "skill_energy_weapons": _("Initial level = 2 + (Perception x 2) + (Luck / 2)"),
@@ -189,13 +162,8 @@ class LevelUpForm(forms.ModelForm):
             "skill_speech": _("Initial level = 2 + (Charisma x 2) + (Luck / 2)"),
             "skill_survival": _("Initial level = 2 + (Endurance x 2) + (Luck / 2)"),
             "skill_unarmed": _("Initial level = 2 + (Endurance x 2) + (Luck / 2)"),
-            "action_points": _("Initial level = 65 + (Agility x 3)"),
-            "poison_resistance": _("Initial level = (Endurance x 5) - 5"),
-            "radiation_resistance": _("Initial level = (Endurance x 2) - 2"),
-            "critical_chance'": _("Initial level = Luck"),
             "hit_points": _("Initial level = 95 + (Endurance x 20) + (Level x 5)"),
             "perks": _("Perks"),
-            "base_armor": _("Base Armor"),
         }
 
 
